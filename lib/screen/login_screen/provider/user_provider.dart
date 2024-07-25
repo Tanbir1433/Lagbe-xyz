@@ -25,10 +25,10 @@ class UserProvider extends ChangeNotifier {
   Future<String?> login(LoginData data) async {
     try {
       Map<String, dynamic> loginData = {
-        "name": data.name?.toLowerCase(),
-        "password": data.password,
+        "name": data.name.toLowerCase(),
+        "password": data.password
       };
-      final response = await service.addItem(endpointUrl: 'users/register', itemData: loginData);
+      final response = await service.addItem(endpointUrl: 'users/login', itemData: loginData);
       if (response.isOk) {
         final ApiResponse<User> apiResponse = ApiResponse<User>.fromJson(response.body, (json)=>User.fromJson(json as Map<String,dynamic>));
         if (apiResponse.success == true) {
@@ -39,7 +39,7 @@ class UserProvider extends ChangeNotifier {
           return null;
         } else {
           SnackBarHelper.showErrorSnackBar('Failed to Login: ${apiResponse.message}');
-          return 'Failed to Login:${apiResponse.message}';
+          return 'Failed to Login';
         }
       } else {
         SnackBarHelper.showErrorSnackBar('Error: ${response.body?['message'] ?? response.statusText}');
