@@ -35,39 +35,38 @@ class CustomSearchBarState extends State<CustomSearchBar> {
           }
         });
       },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: isExpanded ? Colors.white : Colors.grey[200],
-        ),
-        height: 50,
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: FocusScope(
-          node: FocusScopeNode(),
-          child: Row(
-            children: [
-              const Icon(Icons.search),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  focusNode: _focusNode,
-                  controller: widget.controller,
-                  decoration: const InputDecoration(
-                    hintText: 'Search...',
-                    border: InputBorder.none,
+      child: Material(
+        color: isExpanded ? Colors.white : Colors.grey[200],
+        borderRadius: BorderRadius.circular(15),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 4),
+          child: FocusScope(
+            node: FocusScopeNode(),
+            child: Row(
+              children: [
+                const Icon(Icons.search,color: Colors.black,),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    focusNode: _focusNode,
+                    controller: widget.controller,
+                    decoration: const InputDecoration(
+                      hintText: 'Search...',
+                      border: InputBorder.none,
+                    ),
+                    autofocus: false,
+                    onChanged: widget.onChanged,
                   ),
-                  autofocus: false,
-                  onChanged: widget.onChanged,
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  widget.controller.clear();
-                  _focusNode.unfocus();
-                },
-                child: const Icon(Icons.close),
-              ),
-            ],
+                /*GestureDetector(
+                  onTap: () {
+                    widget.controller.clear();
+                    _focusNode.unfocus();
+                  },
+                  child: const Icon(Icons.close),
+                ),*/
+              ],
+            ),
           ),
         ),
       ),

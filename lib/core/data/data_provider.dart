@@ -256,6 +256,7 @@ class DataProvider extends ChangeNotifier {
   }
 
 
+  ///Calculate Discount Percentage
   double calculateDiscountPercentage(num originalPrice, num? discountedPrice) {
     if (originalPrice <= 0) {
       throw ArgumentError('Original price must be greater than zero.');

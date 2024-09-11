@@ -10,7 +10,7 @@ class PosterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 170,
+      height: 200,
       child: Consumer<DataProvider>(
         builder: (context, dataProvider, child) {
           return ListView.builder(
@@ -20,73 +20,31 @@ class PosterSection extends StatelessWidget {
             itemCount: dataProvider.posters.length,
             itemBuilder: (_, index) {
               return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Container(
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: AppData.randomPosterBgColors[index],
+                padding: const EdgeInsets.only(right: 15),
+                child: SizedBox(
+                  width: 390,
+                  child: Material(
+                    clipBehavior: Clip.hardEdge,
                     borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width:160,
-                              child: Text(
-                                '${dataProvider.posters[index].posterName}',
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .displaySmall
-                                    ?.copyWith(color: Colors.white),
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                elevation: 0,
-                                padding: const EdgeInsets.symmetric(horizontal: 18),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18),
-                                ),
-                              ),
-                              child: const Text(
-                                "Get Now",
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      const Spacer(),
-                      Image.network(
-                        '${dataProvider.posters[index].imageUrl}',
-                        height: 125,
-                        width: 120,
-                        fit: BoxFit.contain,
-                        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                                  : null,  // Progress indicator.
-                            ),
-                          );
-                        },
-                        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                          return const Icon(Icons.error, color: Colors.red);
-                        },
-                      )
-                    ],
+                    child: Image.network(
+                      '${dataProvider.posters[index].imageUrl}',
+                      height: 125,
+                      width: 120,
+                      fit: BoxFit.cover,
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                : null,  // Progress indicator.
+                          ),
+                        );
+                      },
+                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                        return const Icon(Icons.error, color: Colors.red);
+                      },
+                    ),
                   ),
                 ),
               );

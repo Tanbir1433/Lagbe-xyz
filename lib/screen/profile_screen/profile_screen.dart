@@ -18,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
     const TextStyle titleStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "My Account",

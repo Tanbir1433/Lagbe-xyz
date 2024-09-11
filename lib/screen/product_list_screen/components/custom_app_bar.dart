@@ -1,3 +1,4 @@
+import 'package:ecommerce_user_app/screen/profile_screen/profile_screen.dart';
 import 'package:ecommerce_user_app/utility/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -30,14 +31,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Scaffold.of(context).openDrawer();
               },
             ),
-            Expanded(
-              child: CustomSearchBar(
-                controller: TextEditingController(),
-                onChanged: (val) {
-                  context.dataProvider.filterProduct(val);
-                },
-              ),
+            Image.asset(
+              "assets/images/app_logo.png",
+              height: 38,
             ),
+
+            AppBarActionButton(
+              icon: Icons.person,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ProfileScreen()));
+              },
+            ),
+
           ],
         ),
       ),

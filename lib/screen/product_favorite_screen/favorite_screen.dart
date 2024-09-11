@@ -17,6 +17,7 @@ class FavoriteScreen extends StatelessWidget {
       context.favoriteProvider.loadFavoriteItems();
     });
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "Favorites",

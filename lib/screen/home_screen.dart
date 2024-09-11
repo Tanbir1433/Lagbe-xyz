@@ -30,8 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return PageWrapper(
       child: Scaffold(
         bottomNavigationBar: BottomNavyBar(
-          itemCornerRadius: 10,
+          itemCornerRadius: 20,
+          iconSize: 26,
           selectedIndex: newIndex,
+          backgroundColor: Colors.white,
           items: AppData.bottomNavyBarItems
               .map(
                 (item) => BottomNavyBarItem(

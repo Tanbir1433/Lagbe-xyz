@@ -17,6 +17,7 @@ class CartScreen extends StatelessWidget {
       context.cartProvider.getCartItems();
     });
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "My Cart",
@@ -54,7 +55,7 @@ class CartScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w900,
-                          color: Color(0xFFEC6813),
+                          color: Color(0xFF7D46BC),
                         ),
                       ),
                     )
@@ -65,15 +66,17 @@ class CartScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
+                  padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(20)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF7D46BC),
+                        padding: const EdgeInsets.symmetric(vertical: 14)),
                     onPressed: context.cartProvider.myCartItems.isEmpty
                         ? null
                         : () {
                             showCustomBottomSheet(context);
                           },
-                    child: const Text("Buy Now", style: TextStyle(color: Colors.white)),
+                    child: const Text("Buy Now", style: TextStyle(color: Colors.white,fontSize: 22)),
                   ),
                 ),
               )

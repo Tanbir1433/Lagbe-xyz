@@ -20,13 +20,13 @@ class AppData {
 
 
   static List<Color> randomPosterBgColors = [
-    const Color(0xFFE70D56),
-    const Color(0xFF9006A4),
-    const Color(0xFF137C0B),
-    const Color(0xFF0F2EDE),
-    const Color(0xFFECBE23),
-    const Color(0xFFA60FF1),
-    const Color(0xFF0AE5CF),
+    const Color(0xFF5068F2),
+    const Color(0xFFDF71EA),
+    const Color(0xFF87D082),
+    const Color(0xFF5068F2),
+    const Color(0xFF87D082),
+    const Color(0xFFDF71EA),
+    const Color(0xFF7D46BC),
     const Color(0xFFE518D1),
   ];
 
@@ -34,22 +34,22 @@ class AppData {
     const BottomNavyBarItem(
       "Home",
       Icon(Icons.home),
-      Color(0xFFEC6813),
+      Color(0xFF551AA2),
     ),
     const BottomNavyBarItem(
       "Favorite",
       Icon(Icons.favorite),
-      Color(0xFFEC6813),
+      Color(0xFF551AA2),
     ),
     const BottomNavyBarItem(
       "Cart",
       Icon(Icons.shopping_cart),
-      Color(0xFFEC6813),
+      Color(0xFF551AA2),
     ),
     const BottomNavyBarItem(
       "Profile",
       Icon(Icons.person),
-      Color(0xFFEC6813),
+      Color(0xFF551AA2),
     ),
   ];
 

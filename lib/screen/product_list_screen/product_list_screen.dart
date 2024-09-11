@@ -1,6 +1,10 @@
+import 'package:ecommerce_user_app/utility/extensions.dart';
+
 import '../../core/data/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../widget/app_bar_action_button.dart';
+import '../../widget/custom_search_bar.dart';
 import 'components/custom_app_bar.dart';
 import '../../../../widget/product_grid_view.dart';
 import 'components/category_selector.dart';
@@ -14,6 +18,7 @@ class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(),
       body: SafeArea(
@@ -23,12 +28,16 @@ class ProductListScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const PosterSection(),
-                Text(
-                  "Top categories",
-                  style: Theme.of(context).textTheme.headlineMedium,
+
+                CustomSearchBar(
+                  controller: TextEditingController(),
+                  onChanged: (val) {
+                    context.dataProvider.filterProduct(val);
+                  },
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 5,),
+                const PosterSection(),
+                const SizedBox(height: 10),
                 Consumer<DataProvider>(
                   builder: (context, dataProvider, child) {
                     return CategorySelector(
