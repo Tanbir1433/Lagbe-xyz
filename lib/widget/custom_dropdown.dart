@@ -37,6 +37,7 @@ class CustomDropdown<T> extends StatelessWidget {
             items: items.map((T value) {
               return DropdownMenuItem<T>(
                 value: value,
+
                 child: Container(
                   height: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -46,8 +47,14 @@ class CustomDropdown<T> extends StatelessWidget {
             }).toList(),
             value: initialValue,
             onChanged: onChanged,
+            dropdownStyleData: DropdownStyleData(
+              decoration: BoxDecoration(
+                color: Colors.grey[200],                // Set the dropdown background color to white
+                borderRadius: BorderRadius.circular(15),  // Rounded corners for the entire dropdown
+              ),
+            ),
             buttonStyleData: ButtonStyleData(
-              padding: EdgeInsets.only(left: 16, right: 8),
+              padding: const EdgeInsets.only(left: 16, right: 8),
               height: 50,
               decoration: BoxDecoration(
                 color: bgColor ?? Colors.grey[200],

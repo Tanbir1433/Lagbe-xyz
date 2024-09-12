@@ -16,7 +16,10 @@ class AppBarActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(8),
+      width: 42,
+      height: 42,
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: AppColor.lightGrey,
@@ -25,7 +28,7 @@ class AppBarActionButton extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         constraints: const BoxConstraints(),
         onPressed: onPressed,
-        icon: Icon(icon, color: Colors.black),
+        icon: Icon(icon, color: Colors.black54,size: 28,),
       ),
     );
   }

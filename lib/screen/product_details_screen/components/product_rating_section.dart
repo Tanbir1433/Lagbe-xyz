@@ -7,23 +7,24 @@ class ProductRatingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 30,
-      crossAxisAlignment: WrapCrossAlignment.center,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         RatingBar.builder(
-          initialRating: 3.2,
+          initialRating: 2.2,
           direction: Axis.horizontal,
+          itemSize: 20,
           itemBuilder: (_, __) => const FaIcon(
             FontAwesomeIcons.solidStar,
             color: Colors.amber,
           ),
           onRatingUpdate: (_) {},
         ),
+        const SizedBox(height: 10),
         Text(
-          "(4500 Reviews)",
+          "(12 Reviews)",
           style: Theme.of(context).textTheme.displaySmall?.copyWith(
-            fontWeight: FontWeight.w300,
+            fontWeight: FontWeight.w300,fontSize: 12
           ),
         )
       ],

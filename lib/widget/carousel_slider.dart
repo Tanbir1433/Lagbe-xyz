@@ -27,7 +27,7 @@ class _CarouselSliderState extends State<CarouselSlider> {
     return Column(
       children: [
         SizedBox(
-          height: height * 0.32,
+          height: height * 0.36,
           child: PageView.builder(
             itemCount: widget.items.length,
             onPageChanged: (int currentIndex) {
@@ -39,8 +39,8 @@ class _CarouselSliderState extends State<CarouselSlider> {
                 fit: BoxFit.none,
                 child: CustomNetworkImage(
                   imageUrl: widget.items.safeElementAt(index)?.url ?? '',
-                  fit: BoxFit.contain,
-                  scale: 3.0,
+                  fit: BoxFit.scaleDown,
+                  scale: 2.0,
                 ),
               );
             },

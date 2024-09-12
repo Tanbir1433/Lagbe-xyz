@@ -23,6 +23,7 @@ class ProductByCategoryScreen extends StatelessWidget {
       context.proByCProvider.filterInitialProductAndSubCategory(selectedCategory);
     });
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -33,23 +34,23 @@ class ProductByCategoryScreen extends StatelessWidget {
                 "${selectedCategory.name}",
                 style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColor.darkOrange),
               ),
-              expandedHeight: 190.0,
+              expandedHeight: 170.0,
               flexibleSpace: LayoutBuilder(
                 builder: (context, constraints) {
                   var top = constraints.biggest.height - MediaQuery.of(context).padding.top;
                   return Stack(
                     children: [
                       Positioned(
-                        top: top - 145,
+                        top: top - 125,
                         left: 0,
                         right: 0,
-                        child: Column(
-                          children: [
-                            Consumer<ProductByCategoryProvider>(
-                              builder: (context, proByCatProvider, child) {
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                  child: HorizontalList(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Column(
+                            children: [
+                              Consumer<ProductByCategoryProvider>(
+                                builder: (context, proByCatProvider, child) {
+                                  return HorizontalList(
                                     items: proByCatProvider.subCategories,
                                     itemToString: (SubCategory? val) => val?.name ?? '',
                                     selected: proByCatProvider.mySelectedSubCategory,
@@ -58,46 +59,47 @@ class ProductByCategoryScreen extends StatelessWidget {
                                         context.proByCProvider.filterProductBySubCategory(val);
                                       }
                                     },
+                                  );
+                                },
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: CustomDropdown<String>(
+                                      hintText: 'Sort By Price',
+                                      items: const ['Low To High', 'High To Low', 'New Products'],
+                                      onChanged: (val) {
+                                        if (val?.toLowerCase() == 'low to high') {
+                                          context.proByCProvider.shortProducts(ascending: true);
+                                        } else {
+                                          context.proByCProvider.shortProducts(ascending: false);
+                                        }
+                                      },
+                                      displayItem: (val) => val,
+                                    ),
                                   ),
-                                );
-                              },
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CustomDropdown<String>(
-                                    hintText: 'Sort By Price',
-                                    items: const ['Low To High', 'High To Low'],
-                                    onChanged: (val) {
-                                      if (val?.toLowerCase() == 'low to high') {
-                                        context.proByCProvider.shortProducts(ascending: true);
-                                      } else {
-                                        context.proByCProvider.shortProducts(ascending: false);
-                                      }
-                                    },
-                                    displayItem: (val) => val,
+                                  const SizedBox(width: 5,),
+                                  Expanded(
+                                    child: Consumer<ProductByCategoryProvider>(
+                                      builder: (context, proByCatProvider, child) {
+                                        return MultiSelectDropDown<Brand>(
+                                          hintText: 'Filter By Brands',
+                                          items: proByCatProvider.brands,
+                                          onSelectionChanged: (val) {
+                                            proByCatProvider.selectedBrands = val;
+                                            context.proByCProvider.filterProductByBrand();
+                                            proByCatProvider.updateUI();
+                                          },
+                                          displayItem: (val) => val.name ?? '',
+                                          selectedItems: proByCatProvider.selectedBrands,
+                                        );
+                                      },
+                                    ),
                                   ),
-                                ),
-                                Expanded(
-                                  child: Consumer<ProductByCategoryProvider>(
-                                    builder: (context, proByCatProvider, child) {
-                                      return MultiSelectDropDown<Brand>(
-                                        hintText: 'Filter By Brands',
-                                        items: proByCatProvider.brands,
-                                        onSelectionChanged: (val) {
-                                          proByCatProvider.selectedBrands = val;
-                                          context.proByCProvider.filterProductByBrand();
-                                          proByCatProvider.updateUI();
-                                        },
-                                        displayItem: (val) => val.name ?? '',
-                                        selectedItems: proByCatProvider.selectedBrands,
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -106,7 +108,7 @@ class ProductByCategoryScreen extends StatelessWidget {
               ),
             ),
             SliverPadding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               sliver: SliverToBoxAdapter(
                 child: Consumer<ProductByCategoryProvider>(
                   builder: (context, proByCaProvider, child) {

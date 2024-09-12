@@ -50,12 +50,12 @@ class CartScreen extends StatelessWidget {
                     ),
                     AnimatedSwitcherWrapper(
                       child: Text(
-                        "\$${context.cartProvider.getCartSubTotal()}",
+                        "\৳${context.cartProvider.getCartSubTotal()}",
                         // key: ValueKey<double>(cartProvider.getCartSubTotal()),
                         style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w900,
-                          color: Color(0xFF7D46BC),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF9b59b6),
                         ),
                       ),
                     )
@@ -69,7 +69,7 @@ class CartScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF7D46BC),
+                      backgroundColor: const Color(0xFF9b59b6),
                         padding: const EdgeInsets.symmetric(vertical: 14)),
                     onPressed: context.cartProvider.myCartItems.isEmpty
                         ? null

@@ -15,34 +15,26 @@ class CategorySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 70,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final category = categories[index];
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 6,vertical: 1),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 1),
             child: OpenContainerWrapper(
               nextScreen: ProductByCategoryScreen(selectedCategory: categories[index]),
-              child: Container(
-                width: 80,
-                height: 80,
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: category.isSelected ? const Color(0xFFf16b26) : const Color(0xFFE5E6E8),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                alignment: Alignment.center,
+              child: SizedBox(
+                width: 100,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
+                    SizedBox(
+                      height: 30,
+                      width: 30,
                       child: Image.network(
                         category.image ?? '',
-                        width: 90,
-                        height: 90,
                         fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
                           return const Icon(Icons.error, color: Colors.grey);
@@ -57,6 +49,7 @@ class CategorySelector extends StatelessWidget {
                         fontSize: 12,
                       ),
                       overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ],
                 ),

@@ -39,12 +39,12 @@ class CustomSearchBarState extends State<CustomSearchBar> {
         color: isExpanded ? Colors.white : Colors.grey[200],
         borderRadius: BorderRadius.circular(15),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 1),
           child: FocusScope(
             node: FocusScopeNode(),
             child: Row(
               children: [
-                const Icon(Icons.search,color: Colors.black,),
+                const Icon(Icons.search,color: Colors.black54,size: 30,),
                 const SizedBox(width: 10),
                 Expanded(
                   child: TextField(

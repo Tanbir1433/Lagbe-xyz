@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return PageWrapper(
       child: Scaffold(
         bottomNavigationBar: BottomNavyBar(
-          itemCornerRadius: 20,
+          itemCornerRadius: 15,
           iconSize: 26,
           selectedIndex: newIndex,
           backgroundColor: Colors.white,
