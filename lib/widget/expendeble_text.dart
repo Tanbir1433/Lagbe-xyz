@@ -4,7 +4,7 @@ class ExpandableText extends StatelessWidget {
   final String text;
   final ValueNotifier<bool> isExpanded = ValueNotifier<bool>(false); // External state management
 
-  ExpandableText({Key? key, required this.text}) : super(key: key);
+  ExpandableText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

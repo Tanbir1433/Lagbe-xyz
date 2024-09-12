@@ -17,7 +17,7 @@ class OpenContainerWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return OpenContainer(
       closedShape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15)),),
-      closedColor: const Color(0xFFE5E6E8),
+      closedColor: const Color(0xFFE7E8E5),
       transitionType: ContainerTransitionType.fadeThrough,
       transitionDuration: const Duration(milliseconds: 900),
       closedBuilder: (_, VoidCallback openContainer) {

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' hide Category;
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import '../../../models/category.dart';
 import '../../models/api_response.dart';
 import '../../models/brand.dart';
@@ -11,7 +10,6 @@ import '../../models/product.dart';
 import '../../models/sub_category.dart';
 import '../../models/user.dart';
 import '../../services/http_services.dart';
-import '../../utility/constants.dart';
 import '../../utility/snack_bar_helper.dart';
 
 class DataProvider extends ChangeNotifier {

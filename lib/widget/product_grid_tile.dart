@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -99,7 +98,7 @@ class ProductGridTile extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      product.offerPrice != 0 ? "\৳ ${product.offerPrice}" : "\$${product.price}",
+                      product.offerPrice != 0 ? "৳ ${product.offerPrice}" : "\$${product.price}",
                       style: Theme.of(context).textTheme.headlineMedium,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -108,7 +107,7 @@ class ProductGridTile extends StatelessWidget {
                   if (product.offerPrice != null && product.offerPrice != product.price)
                     Flexible(
                       child: Text(
-                        "\৳ ${product.price}",
+                        "৳ ${product.price}",
                         style: const TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.grey,

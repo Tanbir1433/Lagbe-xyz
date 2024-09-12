@@ -37,7 +37,7 @@ class CartScreen extends StatelessWidget {
                       },
                     ),
 
-              //? total price section
+              /// total price section
               Container(
                 margin: const EdgeInsets.only(bottom: 15),
                 padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -50,7 +50,7 @@ class CartScreen extends StatelessWidget {
                     ),
                     AnimatedSwitcherWrapper(
                       child: Text(
-                        "\৳${context.cartProvider.getCartSubTotal()}",
+                        "৳${context.cartProvider.getCartSubTotal()}",
                         // key: ValueKey<double>(cartProvider.getCartSubTotal()),
                         style: const TextStyle(
                           fontSize: 22,
@@ -62,7 +62,7 @@ class CartScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              //? buy now button
+              /// buy now button
               SizedBox(
                 width: double.infinity,
                 child: Padding(

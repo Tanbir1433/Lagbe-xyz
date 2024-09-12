@@ -1,7 +1,6 @@
 import '../../../core/data/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../utility/app_data.dart';
 
 
 class PosterSection extends StatelessWidget {
@@ -22,7 +21,7 @@ class PosterSection extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(right: 15),
                 child: SizedBox(
-                  width: 390,
+                  width: MediaQuery.of(context).size.width - 25,
                   child: Material(
                     clipBehavior: Clip.hardEdge,
                     borderRadius: BorderRadius.circular(15),

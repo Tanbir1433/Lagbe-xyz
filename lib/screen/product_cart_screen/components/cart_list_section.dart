@@ -22,23 +22,20 @@ class CartListSection extends StatelessWidget {
             CartModel cartItem = cartProducts[index];
             return Container(
               width: double.infinity,
-              margin: const EdgeInsets.all(15),
+              margin: const EdgeInsets.only(bottom: 10,left: 10,right: 10),
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                color: Colors.grey[200]?.withOpacity(0.6),
-                borderRadius: BorderRadius.circular(10),
+                color: const Color(0xFFE7E8E5),
+                borderRadius: BorderRadius.circular(15),
               ),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                alignment: WrapAlignment.spaceEvenly,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.primaries[index],
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
                     ),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -68,37 +65,42 @@ class CartListSection extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        cartItem.productName,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15,
+                  SizedBox(
+                    width: 100,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          cartItem.productName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        '${cartItem.quantity}',
-                        style: TextStyle(
-                          color: Colors.black.withOpacity(0.5),
-                          fontWeight: FontWeight.w400,
+                        const SizedBox(height: 5),
+                        Text(
+                          '${cartItem.quantity}',
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(0.5),
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        "\$${cartItem.variants.safeElementAt(0)?.price}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 23,
+                        const SizedBox(height: 5),
+                        Text(
+                          "\$${cartItem.variants.safeElementAt(0)?.price}",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  // Add and remove cart item
+                  /// Add and remove cart item
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,

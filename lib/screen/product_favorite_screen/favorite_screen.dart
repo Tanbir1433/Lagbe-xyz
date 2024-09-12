@@ -25,7 +25,7 @@ class FavoriteScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Consumer<FavoriteProvider>(
             builder: (context, favoriteProvider, child) {
               return ProductGridView(

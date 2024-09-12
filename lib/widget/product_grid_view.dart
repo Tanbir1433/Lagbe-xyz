@@ -16,7 +16,7 @@ class ProductGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 10),
       child: GridView.builder(
         itemCount: items.length,
         shrinkWrap: true,
@@ -24,8 +24,8 @@ class ProductGridView extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 10 / 16,
           crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
+          mainAxisSpacing: 15,
+          crossAxisSpacing: 15,
         ),
         itemBuilder: (context, index) {
           Product product = items[index];

@@ -19,9 +19,11 @@ class LoginScreen extends StatelessWidget {
       logo: const AssetImage('assets/images/logo.png'),
       onLogin: (LoginData loginData) {
         context.userProvider.login(loginData);
+        return null;
       },
       onSignup: (SignupData data) {
         context.userProvider.register(data);
+        return null;
       },
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(

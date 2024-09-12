@@ -1,11 +1,8 @@
-import 'package:ecommerce_user_app/utility/extensions.dart';
 import 'package:ecommerce_user_app/widget/custom_appbar/my_appbar.dart';
 
 import '../../core/data/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../widget/app_bar_action_button.dart';
-import '../../widget/custom_search_bar.dart';
 import '../../../../widget/product_grid_view.dart';
 import 'components/category_selector.dart';
 import 'components/poster_section.dart';
@@ -24,7 +21,7 @@ class ProductListScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

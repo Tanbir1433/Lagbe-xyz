@@ -79,13 +79,13 @@ class ProductDetailScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            product.offerPrice != null ? "\৳${product.offerPrice}" : "\$${product.price}",
+                            product.offerPrice != null ? "৳${product.offerPrice}" : "\$${product.price}",
                             style: const TextStyle(color: Color(0xFF9b59b6),fontSize: 20,fontWeight: FontWeight.w700),
                           ),
                           Visibility(
                             visible: product.offerPrice != product.price,
                             child: Text(
-                              "\৳ ${product.price}",
+                              "৳ ${product.price}",
                               style: const TextStyle(
                                 decoration: TextDecoration.lineThrough,
                                 color: Colors.grey,
