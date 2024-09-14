@@ -10,6 +10,7 @@ class MyAddressPage extends StatelessWidget {
   Widget build(BuildContext context) {
     context.profileProvider.retrieveSavedAddress();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "My Address",

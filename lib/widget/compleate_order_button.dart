@@ -12,22 +12,22 @@ class CompleteOrderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.maxFinite,
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 2,
           foregroundColor: Colors.white,
-          backgroundColor: Colors.green,
+          backgroundColor: const Color(0xFF9b59b6),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
         ),
         onPressed: onPressed,
         child:  Text(
           labelText ?? 'Complete Order',
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 18),
         ),
       ),
     );

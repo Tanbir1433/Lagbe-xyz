@@ -1,5 +1,4 @@
 import 'package:ecommerce_user_app/widget/custom_appbar/appbar_state.dart';
-
 import 'screen/home_screen.dart';
 import 'screen/login_screen/login_screen.dart';
 import 'screen/login_screen/provider/user_provider.dart';

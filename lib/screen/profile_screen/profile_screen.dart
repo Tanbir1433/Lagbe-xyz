@@ -26,18 +26,21 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         children: [
-          const SizedBox(
-            height: 200,
-            child: CircleAvatar(
-              radius: 80,
-              backgroundImage: AssetImage(
+          SizedBox(
+            height: 150,
+            width: 150,
+            child: Material(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(100),
+              clipBehavior: Clip.hardEdge,
+              child: Image.asset(
                 'assets/images/profile_pic.png',
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Center(
             child: Text(
               "${context.userProvider.getLoginUsr()?.name}",
@@ -67,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                 backgroundColor: AppColor.darkOrange,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
               ),
               onPressed: () {
                 context.userProvider.logOutUser();

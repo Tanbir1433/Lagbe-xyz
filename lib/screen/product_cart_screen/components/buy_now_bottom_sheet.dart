@@ -11,17 +11,18 @@ void showCustomBottomSheet(BuildContext context) {
   context.cartProvider.clearCouponDiscount();
   context.cartProvider.retrieveSavedAddress();
   showModalBottomSheet(
+    backgroundColor: Colors.white,
     context: context,
     builder: (context) {
       return Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20),
         child: Form(
           key: context.cartProvider.buyNowFormKey,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Toggle Address Fields
+                /// Toggle Address Fields
                 ListTile(
                   title: const Text('Enter Address'),
                   trailing: IconButton(
@@ -114,26 +115,30 @@ void showCustomBottomSheet(BuildContext context) {
                   },
                 ),
 
-                // Payment Options
-                Consumer<CartProvider>(
-                  builder: (context, cartProvider, child) {
-                    return CustomDropdown<String>(
-                        bgColor: Colors.white,
-                        hintText: cartProvider.selectedPaymentOption,
-                        items: const ['cod', 'prepaid'],
-                        onChanged: (val) {
-                          cartProvider.selectedPaymentOption = val ?? 'prepaid';
-                          cartProvider.updateUI();
-                        },
-                        displayItem: (val) => val);
-                  },
+                /// Payment Options
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Consumer<CartProvider>(
+                    builder: (context, cartProvider, child) {
+                      return CustomDropdown(
+                          bgColor: Colors.white,
+                          hintText: cartProvider.selectedPaymentOption,
+                          items: const ['cod', 'prepaid'],
+                          onChanged: (val) {
+                            cartProvider.selectedPaymentOption = val ?? 'prepaid';
+                            cartProvider.updateUI();
+                          },
+                          displayItem: (val) => val);
+                    },
+                  ),
                 ),
-                // Coupon Code Field
+
+                /// Coupon Code Field
                 Row(
                   children: [
                     Expanded(
                       child: CustomTextField(
-                        height: 60,
+                        height: 65,
                         labelText: 'Enter Coupon code',
                         onSave: (value) {},
                         controller: context.cartProvider.couponController,
@@ -144,7 +149,8 @@ void showCustomBottomSheet(BuildContext context) {
                     })
                   ],
                 ),
-                //? Text for Total Amount, Total Offer Applied, and Grand Total
+                const SizedBox(height: 3,),
+                /// Text for Total Amount, Total Offer Applied, and Grand Total
                 Container(
                   width: double.maxFinite,
                   decoration: BoxDecoration(
@@ -158,37 +164,40 @@ void showCustomBottomSheet(BuildContext context) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Total Amount             : \$${context.cartProvider.getCartSubTotal()}',
+                          Text('Total Amount             : ৳${context.cartProvider.getCartSubTotal()}',
                               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
-                          Text('Total Offer Applied  : \$${context.cartProvider.couponCodeDiscount}',
+                          Text('Total Offer Applied  : ৳${context.cartProvider.couponCodeDiscount}',
                               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
-                           Text('Grand Total            : \$${context.cartProvider.getGrandTotal()}',
+                           Text('Grand Total            : ৳${context.cartProvider.getGrandTotal()}',
                               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue)),
                         ],
                       );
                     },
                   ),
                 ),
-                const Divider(),
-                //? Pay Button
-                Consumer<CartProvider>(
-                  builder: (context, cartProvider, child) {
-                    return CompleteOrderButton(
-                        labelText: 'Complete Order  \$${context.cartProvider.getGrandTotal()} ',
-                        onPressed: () {
-                          if (!cartProvider.isExpanded) {
-                            cartProvider.isExpanded = true;
-                            cartProvider.updateUI();
-                            return;
-                          }
-                          // Check if the form is valid
-                          if (context.cartProvider.buyNowFormKey.currentState!.validate()) {
-                            context.cartProvider.buyNowFormKey.currentState!.save();
-                            context.cartProvider.submitOrder(context);
-                            return;
-                          }
-                        });
-                  },
+
+                /// Pay Button
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Consumer<CartProvider>(
+                    builder: (context, cartProvider, child) {
+                      return CompleteOrderButton(
+                          labelText: 'Complete Order  ৳${context.cartProvider.getGrandTotal()} ',
+                          onPressed: () {
+                            if (!cartProvider.isExpanded) {
+                              cartProvider.isExpanded = true;
+                              cartProvider.updateUI();
+                              return;
+                            }
+                            /// Check if the form is valid
+                            if (context.cartProvider.buyNowFormKey.currentState!.validate()) {
+                              context.cartProvider.buyNowFormKey.currentState!.save();
+                              context.cartProvider.submitOrder(context);
+                              return;
+                            }
+                          });
+                    },
+                  ),
                 )
               ],
             ),

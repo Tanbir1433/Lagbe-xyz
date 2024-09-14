@@ -1,5 +1,3 @@
-
-
 import 'package:ecommerce_user_app/utility/extensions.dart';
 
 import '../../utility/app_color.dart';
@@ -16,7 +14,7 @@ class LoginScreen extends StatelessWidget {
       // savedEmail: 'testing@gmail.com',
       // savedPassword: '12345',
       loginAfterSignUp: false,
-      logo: const AssetImage('assets/images/logo.png'),
+      logo: const AssetImage('assets/images/app_logo.png'),
       onLogin: (LoginData loginData) {
         context.userProvider.login(loginData);
         return null;
@@ -35,13 +33,26 @@ class LoginScreen extends StatelessWidget {
       onRecoverPassword: (_) => null,
       hideForgotPasswordButton: true,
       theme: LoginTheme(
-          primaryColor: AppColor.darkGrey,
-          accentColor: AppColor.darkOrange,
-          buttonTheme: const LoginButtonTheme(
+        logoWidth: 0.60,
+        primaryColor: AppColor.lightGrey,
+        accentColor: AppColor.darkOrange,
+        buttonTheme: LoginButtonTheme(
             backgroundColor: AppColor.darkOrange,
-          ),
-          cardTheme: const CardTheme(color: Colors.white, surfaceTintColor: Colors.white),
-          titleStyle: const TextStyle(color: Colors.black)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12))),
+        cardTheme: const CardTheme(
+            color: Colors.white, surfaceTintColor: Colors.white),
+        titleStyle: const TextStyle(color: Colors.black),
+        switchAuthTextColor: AppColor.darkOrange,
+        inputTheme: InputDecorationTheme(
+          filled: true,
+          suffixIconColor: Colors.blue,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none
+          )
+        )
+      ),
     );
   }
 }

@@ -16,6 +16,7 @@ class MyOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context.dataProvider.getAllOrderByUser(context.userProvider.getLoginUsr());
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "My Orders",

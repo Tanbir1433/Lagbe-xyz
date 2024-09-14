@@ -30,7 +30,7 @@ class CustomDropdown<T> extends StatelessWidget {
             hint: Text(
               hintText,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 18,
                 color: Theme.of(context).hintColor,
               ),
             ),

@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:ecommerce_user_app/models/api_response.dart';
@@ -60,7 +59,7 @@ class UserProvider extends ChangeNotifier {
         "password": data.password,
       };
       final response =
-          await service.addItem(endpointUrl: 'users/register', itemData: user);
+      await service.addItem(endpointUrl: 'users/register', itemData: user);
       if (response.isOk) {
         ApiResponse apiResponse = ApiResponse.fromJson(response.body, null);
         if (apiResponse.success == true) {

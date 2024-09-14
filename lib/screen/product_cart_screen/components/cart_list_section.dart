@@ -89,9 +89,9 @@ class CartListSection extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          "\$${cartItem.variants.safeElementAt(0)?.price}",
+                          "৳${cartItem.variants.safeElementAt(0)?.price}",
                           style: const TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                             fontSize: 20,
                           ),
                           maxLines: 1,
@@ -117,7 +117,7 @@ class CartListSection extends StatelessWidget {
                           },
                           icon: const Icon(
                             Icons.remove,
-                            color: Color(0xFFEC6813),
+                            color: Color(0xFF9b59b6),
                           ),
                         ),
                         Text(
@@ -132,7 +132,7 @@ class CartListSection extends StatelessWidget {
                           onPressed: () {
                             context.cartProvider.updateCart(cartItem, 1);
                           },
-                          icon: const Icon(Icons.add, color: Color(0xFFEC6813)),
+                          icon: const Icon(Icons.add, color: Color(0xFF9b59b6)),
                         ),
                       ],
                     ),
