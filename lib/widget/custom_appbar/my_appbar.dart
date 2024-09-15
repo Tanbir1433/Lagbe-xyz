@@ -5,7 +5,7 @@ import '../../core/data/data_provider.dart';
 import '../../models/user.dart';
 import '../../utility/constants.dart';
 import '../app_bar_action_button.dart';
-import '../custom_search_bar.dart';
+import '../custome_searchbar/custom_search_bar.dart';
 import 'appbar_state.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {

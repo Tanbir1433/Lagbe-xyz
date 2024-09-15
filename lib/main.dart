@@ -1,4 +1,5 @@
 import 'package:ecommerce_user_app/widget/custom_appbar/appbar_state.dart';
+import 'package:ecommerce_user_app/widget/custome_searchbar/scroll_provider.dart';
 import 'screen/home_screen.dart';
 import 'screen/login_screen/login_screen.dart';
 import 'screen/login_screen/provider/user_provider.dart';
@@ -39,6 +40,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (context) => CartProvider(context.userProvider)),
         ChangeNotifierProvider(create: (context) => FavoriteProvider(context.dataProvider)),
         ChangeNotifierProvider(create: (context) => AppBarState()),
+        ChangeNotifierProvider(create: (context) => ScrollProvider()),
       ],
       child: const MyApp(),
     ),
