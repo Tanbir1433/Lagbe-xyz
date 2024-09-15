@@ -1,12 +1,8 @@
 import 'package:ecommerce_user_app/screen/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerce_user_app/widget/custom_appbar/my_appbar.dart';
 import '../../core/data/data_provider.dart';
 import '../../../../widget/product_grid_view.dart';
-import '../../models/user.dart';
-import '../../utility/constants.dart';
 import '../../widget/app_bar_action_button.dart';
 import '../../widget/custome_searchbar/custom_search_bar.dart'; // Ensure correct import
 import '../../widget/custome_searchbar/scroll_provider.dart';
@@ -40,10 +36,10 @@ class ProductListScreen extends StatelessWidget {
                   AppBarActionButton(
                     icon: Icons.menu,
                     onPressed: () {
-                      final box = GetStorage();
+                      /*final box = GetStorage();
                       Map<String, dynamic>? userJson = box.read(USER_INFO_BOX);
                       User? userLogged = User.fromJson(userJson ?? {});
-                      Scaffold.of(context).openDrawer();
+                      Scaffold.of(context).openDrawer();*/
                     },
                   ),
                   Image.asset(
@@ -80,20 +76,20 @@ class ProductListScreen extends StatelessWidget {
                       height: scrollProvider.showSearchBar
                           ? 60
                           : 0, // Smooth height transition
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 2, vertical: 2),
-                      child: scrollProvider.showSearchBar
-                          ? CustomSearchBar(
-                              controller:
-                                  TextEditingController(), // Provide a controller
-                              onChanged: (val) {
-                                final dataProvider =
-                                    context.read<DataProvider>();
-                                dataProvider.filterProduct(val);
-                              },
-                            )
-                          : const SizedBox.shrink(),
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 400),
+                        opacity: scrollProvider.showSearchBar ? 1.0 : 0.0, // Smooth opacity transition
+                        child: scrollProvider.showSearchBar
+                            ? CustomSearchBar(
+                          controller: TextEditingController(), // Provide a controller
+                          onChanged: (val) {
+                            final dataProvider =
+                            context.read<DataProvider>();
+                            dataProvider.filterProduct(val);
+                          },
+                        )
+                            : const SizedBox.shrink(),
+                      ),
                     );
                   },
                 ),
