@@ -72,23 +72,19 @@ class ProductListScreen extends StatelessWidget {
                 Consumer<ScrollProvider>(
                   builder: (context, scrollProvider, _) {
                     return AnimatedContainer(
+                      margin: const EdgeInsets.only(right: 4,left: 1,top: 2,bottom: 1),
                       duration: const Duration(milliseconds: 400),
-                      height: scrollProvider.showSearchBar
-                          ? 60
-                          : 0, // Smooth height transition
+                      height: scrollProvider.showSearchBar ? 60 : 0, 
                       child: AnimatedOpacity(
                         duration: const Duration(milliseconds: 400),
-                        opacity: scrollProvider.showSearchBar ? 1.0 : 0.0, // Smooth opacity transition
-                        child: scrollProvider.showSearchBar
-                            ? CustomSearchBar(
+                        opacity: scrollProvider.showSearchBar ? 1.0 : 0.0,
+                        child: CustomSearchBar(
                           controller: TextEditingController(), // Provide a controller
                           onChanged: (val) {
-                            final dataProvider =
-                            context.read<DataProvider>();
+                            final dataProvider = context.read<DataProvider>();
                             dataProvider.filterProduct(val);
                           },
-                        )
-                            : const SizedBox.shrink(),
+                        ),
                       ),
                     );
                   },

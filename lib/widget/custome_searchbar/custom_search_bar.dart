@@ -44,7 +44,7 @@ class CustomSearchBarState extends State<CustomSearchBar> {
             node: FocusScopeNode(),
             child: Row(
               children: [
-                const Icon(Icons.search,color: Colors.black54,size: 30,),
+                const Icon(Icons.search,color: Colors.black54,size: 32),
                 const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
@@ -53,6 +53,7 @@ class CustomSearchBarState extends State<CustomSearchBar> {
                     decoration: const InputDecoration(
                       hintText: 'Search...',
                       border: InputBorder.none,
+                      hintStyle: TextStyle(fontSize: 19,color: Colors.black54)
                     ),
                     autofocus: false,
                     onChanged: widget.onChanged,
