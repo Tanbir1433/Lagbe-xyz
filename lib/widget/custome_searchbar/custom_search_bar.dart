@@ -59,13 +59,13 @@ class CustomSearchBarState extends State<CustomSearchBar> {
                     onChanged: widget.onChanged,
                   ),
                 ),
-                /*GestureDetector(
+                GestureDetector(
                   onTap: () {
                     widget.controller.clear();
                     _focusNode.unfocus();
                   },
                   child: const Icon(Icons.close),
-                ),*/
+                ),
               ],
             ),
           ),
