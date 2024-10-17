@@ -78,18 +78,6 @@ class DataProvider extends ChangeNotifier {
     return _filteredCategories;
   }
 
-  ///filter Categories
-  void filterCategories(String keyword) {
-    if (keyword.isEmpty) {
-      _filteredCategories = List.from(_allCategories);
-    } else {
-      final lowerKeyword = keyword.toLowerCase();
-      _filteredCategories = _allCategories.where((category) {
-        return (category.name ?? '').toLowerCase().contains(lowerKeyword);
-      }).toList();
-    }
-    notifyListeners();
-  }
 
   ///Get All SubCategory
   Future<List<SubCategory>> getAllSubCategory({bool showSnack = false}) async {
@@ -114,18 +102,6 @@ class DataProvider extends ChangeNotifier {
     return _filteredSubCategories;
   }
 
-  ///filter SubCategories
-  void filterSubCategories(String keyword) {
-    if (keyword.isEmpty) {
-      _filteredSubCategories = List.from(_allSubCategories);
-    } else {
-      final lowerKeyword = keyword.toLowerCase();
-      _filteredSubCategories = _allSubCategories.where((subcategory) {
-        return (subcategory.name ?? '').toLowerCase().contains(lowerKeyword);
-      }).toList();
-    }
-    notifyListeners();
-  }
 
   ///Get All Brands
   Future<List<Brand>> getAllBrands({bool showSnack = false}) async {

@@ -28,7 +28,6 @@ class HttpService  {
     }
   }
 
-
   Future<Response> updateItem({required String endpointUrl, required String itemId, required dynamic itemData}) async {
     try {
       return await GetConnect().put('$baseUrl/$endpointUrl/$itemId', itemData);

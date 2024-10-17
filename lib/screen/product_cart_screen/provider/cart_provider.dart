@@ -50,6 +50,7 @@ class CartProvider extends ChangeNotifier {
     flutterCart.updateQuantity(cartItem.productId, cartItem.variants, quantity);
     notifyListeners();
   }
+
   /// Get Cart SubTotal
   double getCartSubTotal(){
     return flutterCart.subtotal;
@@ -81,8 +82,7 @@ class CartProvider extends ChangeNotifier {
       };
       final response = await service.addItem(endpointUrl: 'couponCodes/check-coupon', itemData: couponData);
       if (response.isOk) {
-        final ApiResponse<Coupon> apiResponse =
-        ApiResponse<Coupon>.fromJson(response.body, (json)=>Coupon.fromJson(json as Map<String, dynamic>));
+        final ApiResponse<Coupon> apiResponse = ApiResponse<Coupon>.fromJson(response.body, (json)=>Coupon.fromJson(json as Map<String, dynamic>));
         if (apiResponse.success == true) {
           Coupon? coupon = apiResponse.data;
           if(coupon != null){

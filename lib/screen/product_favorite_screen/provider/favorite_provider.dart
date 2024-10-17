@@ -44,6 +44,7 @@ class FavoriteProvider extends ChangeNotifier {
   ///Clear Favorite List
   clearFavoriteList(){
     box.remove(FAVORITE_PRODUCT_BOX);
+    notifyListeners();
   }
 
 
